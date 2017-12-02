@@ -1,5 +1,5 @@
 import random
-
+import time
 #Player_Name_Input will be the function to name the character
 def player_name_input():
     name = raw_input("What's your name? ")
@@ -36,6 +36,37 @@ def set_stats():
     print("Your WIS is " + str(WIS))
     print("Your CHA is " + str(CHA))
 set_stats()
+#Function set to print the "story" and display the users choices
+def story_one():
+    print("You stand in front of a door forged of pure black steel. The possibility of whatcould be behind such a form tempts you to enter it.")
+    print("What will you do?")
+    print("1. Go to town.")
+    print("2. Enter through the door.")
+#New function to handle user input
+def story_input():
+    #This handles a user not inputting a valid integer. Like entering a string for example
+    while True:
+        try:
+            choice = input("")
+            break
+        except:
+            print("That's not a valid option.")
+    if choice == 1:
+        return
+    elif choice == 2:
+        print("You encounter a sickly green, small figure. It's a goblin!")
+        return
+    #This recalls the input function if a user breaks the input system with invalid input
+    else:
+        print("That's not a valid option.")
+        print("Please try again.")
+        story_input()
+story_one()
+story_input()
+        
+    
+    
+
 
 
 
