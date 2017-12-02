@@ -52,17 +52,24 @@ def story_input():
         except:
             print("That's not a valid option.")
     if choice == 1:
+        print("You decide it's best to go back to town, and head home.")
         return
     elif choice == 2:
+        goblin_exists = 1
         print("You encounter a sickly green, small figure. It's a goblin!")
         return
     #This recalls the input function if a user breaks the input system with invalid input
     else:
         print("That's not a valid option.")
         print("Please try again.")
+        print("1. Go to town.")
+        print("2. Enter through the door.")
         story_input()
 story_one()
 story_input()
+
+
+        
         
     
     
