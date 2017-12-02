@@ -1,12 +1,34 @@
 import random
 import time
 
+class Character:
+  name = ""
+
+  STR = 0
+  DEX = 0
+  CON = 0
+  INT = 0
+  WIS = 0
+  CHA = 0
+
+  def __init__(self, name):
+    print("Then your legend will be the legend of " + name + ", Level 1 Fighter!")
+    self.name = name
+
+  def print_stats(self):
+    print("{0}'s STR is {1}".format(self.name, self.STR))
+    print("{0}'s DEX is {1}".format(self.name, self.DEX))
+    print("{0}'s CON is {1}".format(self.name, self.CON))
+    print("{0}'s INT is {1}".format(self.name, self.INT))
+    print("{0}'s WIS is {1}".format(self.name, self.WIS))
+    print("{0}'s CHA is {1}".format(self.name, self.CHA))
+
 '''
 Function to name the character.
 '''
 def player_name_input():
     name = raw_input("What's your name? ")
-    print("Then your legend will be the legend of " + name + ", Level 1 Fighter!")
+    return name
 
 '''
 Roll 4 6-sided dice, drops the lowest one, and returns the sum.
@@ -29,19 +51,15 @@ def roll_stat():
 '''
 Sets the value for the 6 DND stats, and then prints them.
 '''
-def set_stats():
-    STR = roll_stat()
-    DEX = roll_stat()
-    CON = roll_stat()
-    INT = roll_stat()
-    WIS = roll_stat()
-    CHA = roll_stat()
-    print("Your STR is " + str(STR))
-    print("Your DEX is " + str(DEX))
-    print("Your CON is " + str(CON)) 
-    print("Your INT is " + str(INT))
-    print("Your WIS is " + str(WIS))
-    print("Your CHA is " + str(CHA))
+def set_stats_for_character(character):
+    character.STR = roll_stat()
+    character.DEX = roll_stat()
+    character.CON = roll_stat()
+    character.INT = roll_stat()
+    character.WIS = roll_stat()
+    character.CHA = roll_stat()
+
+    character.print_stats()
 
 '''
 Function set to print the "story" and display the users choices
@@ -59,7 +77,7 @@ def story_input():
     #This handles a user not inputting a valid integer. Like entering a string for example
     while True:
       choice = input("")
-      
+
       if choice == 1:
           print("You decide it's best to go back to town, and head home.")
           return
@@ -73,11 +91,18 @@ def story_input():
           print("Please try again.")
           story_one()
 
-def main():
-  player_name_input()
-  set_stats()
+def start_story():
   story_one()
   story_input()
+
+def create_hero():
+  player_name = player_name_input()
+  hero = Character(player_name)
+  set_stats_for_character(hero)
+
+def main():
+  create_hero()
+  start_story()
 
 if __name__ == "__main__":
   main()
