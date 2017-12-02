@@ -1,6 +1,21 @@
 import random
 import time
 
+class Character:
+  name = ""
+
+  STR = 0
+  DEX = 0
+  CON = 0
+  INT = 0
+  WIS = 0
+  CHA = 0
+
+  def __init__(self, name):
+    print("Hello i am {0} nice to meet you".format(name))
+    self.name = name
+
+
 '''
 Function to name the character.
 '''
@@ -59,7 +74,7 @@ def story_input():
     #This handles a user not inputting a valid integer. Like entering a string for example
     while True:
       choice = input("")
-      
+
       if choice == 1:
           print("You decide it's best to go back to town, and head home.")
           return
@@ -74,6 +89,7 @@ def story_input():
           story_one()
 
 def main():
+  hero = Character("test")
   player_name_input()
   set_stats()
   story_one()
